@@ -43,7 +43,8 @@ spec:
       priorityClassName: system-cluster-critical
       containers:
         - name: csi-provisioner
-          image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2
+          #image: k8s.gcr.io/sig-storage/csi-provisioner:v2.2.2
+          image: csiplugin/csi-provisioner:v2.2.2
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -60,7 +61,8 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-resizer
-          image: k8s.gcr.io/sig-storage/csi-resizer:v1.2.0
+          #image: k8s.gcr.io/sig-storage/csi-resizer:v1.2.0
+          image: csiplugin/csi-resizer:v1.2.0
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -76,7 +78,8 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-snapshotter
-          image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.1.1
+          #image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.1.1
+          image: csiplugin/csi-snapshotter:v4.0.0
           args:
             - "--csi-address=$(ADDRESS)"
             - "--v=5"
@@ -92,7 +95,8 @@ spec:
             - name: socket-dir
               mountPath: /csi
         - name: csi-cephfsplugin-attacher
-          image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1
+          #image: k8s.gcr.io/sig-storage/csi-attacher:v3.2.1
+          image: csiplugin/csi-attacher:v3.2.1
           args:
             - "--v=5"
             - "--csi-address=$(ADDRESS)"
